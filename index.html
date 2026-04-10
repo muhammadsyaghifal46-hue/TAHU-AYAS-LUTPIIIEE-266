@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tahu Ayas | Tahu Berkualitas</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- CSS Eksternal -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- TOAST: Notifikasi Tambah ke Keranjang -->
+  <div id="toast" class="custom-toast">
+    Produk berhasil ditambahkan ke keranjang!
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
+    <div class="container">
+      <a class="navbar-brand" href="#home">Tahu Ayas</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link active" href="#home">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="#produk">Produk</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pembayaran">Pembayaran</a></li>
+          <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <button class="cart-btn" data-bs-toggle="modal" data-bs-target="#cartModal">
+              🛒 Keranjang <span id="cart-count">0</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero position-relative" id="home">
+    <div class="container">
+      <div class="row align-items-center g-5">
+
+        <!-- Konten Kiri -->
+        <div class="col-lg-6">
+          <div class="hero-content">
+            <div class="hero-badge">Tahu Lokal Berkualitas & Higienis</div>
+            <h1>
+              Tahu Ayas <br />
+              <span>Lezat, Segar, dan Berkualitas</span> Setiap Hari
+            </h1>
+            <p>
+              Tahu Ayas menghadirkan tahu pilihan yang fresh, higienis, gurih,
+              dan cocok untuk kebutuhan keluarga maupun usaha kuliner.
+            </p>
+            <div class="hero-btns">
+              <a href="#produk" class="btn-elegant">Lihat Produk</a>
+              <a href="https://wa.me/6282326826612" target="_blank" class="btn-outline-elegant">Order Sekarang</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gambar Kanan -->
+        <div class="col-lg-6 position-relative">
+          <div class="hero-image-wrap position-relative">
+            <img src="tahu utama.png" alt="Produk Tahu Ayas" class="hero-image" />
+            <div class="hero-text-top-left">Premium & Fresh</div>
+            <div class="hero-text-bottom-right">Lembut, Gurih, & Higienis</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUK SECTION -->
+  <section class="section-padding" id="produk">
+    <div class="container text-center">
+      <div class="section-title">
+        <h2>Produk Kami</h2>
+        <p>Tahu pilihan dengan kualitas terbaik, dibuat segar setiap hari.</p>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+
+        <!-- Produk 1 -->
+        <div class="col-md-6 col-lg-4 d-flex justify-content-center">
+          <div class="product-card h-100 text-center">
+            <img src="tahuasinkotak.png" alt="Tahu Goreng Asin" class="img-fluid mb-3"/>
+            <div class="product-body">
+              <h5>Tahu Goreng Asin</h5>
+              <div class="price" data-unit-price="1000">Rp 1.000 / Biji</div>
+              <p class="min-order text-muted small mb-2">
+                Minimal Rp <span class="min-price">10.000</span> → Anda akan mendapat <span class="min-qty">10</span> biji
+              </p>
+              <p>Isian padat, tekstur lembut, cocok untuk camilan maupun lauk sehari-hari.</p>
+
+              <div class="quantity-box d-flex justify-content-center align-items-center mb-2">
+                <button type="button" onclick="changePrice('price1', 1000, -1)">-</button>
+                <input type="text" id="price1" value="10000" class="mx-2 text-center" style="width:90px"
+                       oninput="formatPriceInput(this); updateQty('price1', 1000)" />
+                <button type="button" onclick="changePrice('price1', 1000, 1)">+</button>
+              </div>
+
+              <button class="btn-cart-add btn btn-primary w-100" onclick="addToCartByPrice('Tahu Goreng Asin', 1000, 'price1')">
+                Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produk 2 -->
+        <div class="col-md-6 col-lg-4 d-flex justify-content-center">
+          <div class="product-card h-100 text-center">
+            <img src="tahugoreng.png" alt="Tahu Goreng Segitiga" class="img-fluid mb-3"/>
+            <div class="product-body">
+              <h5>Tahu Goreng Segitiga</h5>
+              <div class="price" data-unit-price="200">Rp 200 / Biji</div>
+              <p class="min-order text-muted small mb-2">
+                Minimal Rp <span class="min-price">10.000</span> → Anda akan mendapat <span class="min-qty">50</span> biji
+              </p>
+              <p>Gurih, renyah di luar, lembut di dalam. Cocok untuk jualan maupun konsumsi keluarga.</p>
+
+              <div class="quantity-box d-flex justify-content-center align-items-center mb-2">
+                <button type="button" onclick="changePrice('price2', 200, -1)">-</button>
+                <input type="text" id="price2" value="10000" class="mx-2 text-center" style="width:90px"
+                       oninput="formatPriceInput(this); updateQty('price2', 200)" />
+                <button type="button" onclick="changePrice('price2', 200, 1)">+</button>
+              </div>
+
+              <button class="btn-cart-add btn btn-primary w-100" onclick="addToCartByPrice('Tahu Goreng Segitiga', 200, 'price2')">
+                Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produk 3 -->
+        <div class="col-md-6 col-lg-4 d-flex justify-content-center">
+          <div class="product-card h-100 text-center">
+            <img src="tahuputeh.png" alt="Tahu Kotak Putih" class="img-fluid mb-3"/>
+            <div class="product-body">
+              <h5>Tahu Kotak Putih</h5>
+              <div class="price" data-unit-price="400">Rp 400 / Biji</div>
+              <p class="min-order text-muted small mb-2">
+                Minimal Rp <span class="min-price">10.000</span> → Anda akan mendapat <span class="min-qty">25</span> biji
+              </p>
+              <p>Tahu putih segar, cocok untuk berbagai masakan rumahan.</p>
+
+              <div class="quantity-box d-flex justify-content-center align-items-center mb-2">
+                <button type="button" onclick="changePrice('price3', 400, -1)">-</button>
+                <input type="text" id="price3" value="10000" class="mx-2 text-center" style="width:90px"
+                       oninput="formatPriceInput(this); updateQty('price3', 400)" />
+                <button type="button" onclick="changePrice('price3', 400, 1)">+</button>
+              </div>
+
+              <button class="btn-cart-add btn btn-primary w-100" onclick="addToCartByPrice('Tahu Kotak Putih', 400, 'price3')">
+                Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TENTANG KAMI -->
+  <section class="about-modern section-padding" id="tentang">
+    <div class="container">
+      <div class="row align-items-center g-4">
+
+        <!-- Kiri: Deskripsi -->
+        <div class="col-lg-7">
+          <div class="about-modern-content">
+            <span class="about-label">Tentang Kami</span>
+            <h2 class="about-modern-title">Tahu Ayas</h2>
+            <p><strong>Tahu Ayas</strong> adalah UMKM lokal yang bergerak di bidang produksi tahu sehat, higienis, dan berkualitas tinggi. Kami menghadirkan tahu yang dibuat dari bahan baku pilihan dengan proses produksi yang bersih dan terjaga, sehingga menghasilkan tahu yang lezat, bergizi, aman, dan cocok untuk konsumsi sehari-hari.</p>
+            <p>Dengan komitmen pada kualitas, kebersihan, dan kepuasan pelanggan, Tahu Ayas siap menjadi pilihan terbaik untuk kebutuhan tahu keluarga maupun usaha kuliner Anda.</p>
+          </div>
+        </div>
+
+        <!-- Kanan: Keunggulan -->
+        <div class="col-lg-5">
+          <div class="about-modern-side">
+            <h4>Keunggulan Tahu Ayas</h4>
+            <div class="about-point"><span>✓</span><p>Bahan baku pilihan dan berkualitas</p></div>
+            <div class="about-point"><span>✓</span><p>Diproduksi secara higienis dan fresh setiap hari</p></div>
+            <div class="about-point"><span>✓</span><p>Cocok untuk keluarga dan usaha kuliner</p></div>
+            <a href="https://wa.me/6282326826612" target="_blank" class="btn-elegant mt-3">Hubungi Kami</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+ <!-- METODE PEMBAYARAN PREMIUM -->
+<section class="section-padding payment-section" id="pembayaran">
+  <div class="container text-center">
+
+    <div class="section-title mb-5">
+      <h2>Metode Pembayaran</h2>
+      <p>Pilih metode pembayaran & sistem pengambilan dengan mudah dan aman</p>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Cara Pemesanan -->
+      <div class="col-md-4">
+        <div class="payment-card">
+          <h5>📋 Cara Pemesanan</h5>
+          <ul class="text-start mt-3">
+            <li>Pilih produk & masukkan ke keranjang</li>
+            <li>Klik tombol <b>Pesan via WhatsApp</b></li>
+            <li>Kirim pesanan Anda</li>
+            <li>Lakukan pembayaran</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Pengambilan -->
+      <div class="col-md-4">
+        <div class="payment-card">
+          <h5>🚚 Sistem Pengambilan</h5>
+          <ul class="text-start mt-3">
+            <li>Ambil langsung ke rumah produksi</li>
+            <li>COD (bayar di tempat)</li>
+          </ul>
+          <p class="small text-muted mt-2">
+            *COD menyesuaikan lokasi & jumlah pesanan
+          </p>
+        </div>
+      </div>
+
+      <!-- Pembayaran -->
+      <div class="col-md-4">
+        <div class="payment-card highlight">
+
+          <h5 class="mb-3">💳 Pembayaran</h5>
+
+          <!-- DANA -->
+          <div class="payment-method">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg" alt="DANA">
+            <div>
+              <strong>DANA</strong>
+              <br>6282313469840
+              
+            </div>
+          </div>
+
+          <a href="https://link.dana.id/minta?phone=6282313469840" target="_blank" class="btn-pay">
+            Bayar via DANA
+          </a>
+
+          <!-- BRI -->
+          <div class="payment-method mt-3">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/BRI_2020.svg" alt="BRI">
+            <div>
+              <strong>Bank BRI</strong><br>
+              3689*********39<br>
+              MUHAMMAD LUTHFI
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <p class="mt-5 text-muted">
+      Setelah pembayaran, kirim bukti transfer via WhatsApp agar pesanan segera diproses.
+    </p>
+
+  </div>
+</section>
+
+  <!-- KONTAK -->
+    <section class="section-padding contact-section" id="kontak">
+     <div class="container">
+
+   <!-- Judul -->
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">Hubungi Kami</h2>
+      <p class="text-muted">Silakan hubungi kami untuk pemesanan atau informasi lebih lanjut</p>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- KIRI: KONTAK -->
+      <div class="col-lg-6">
+        <div class="contact-card h-100">
+
+          <h5 class="mb-4">Kontak Kami</h5>
+
+          <!-- WhatsApp -->
+          <a href="https://wa.me/6282326826612" target="_blank" class="contact-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png">
+            <span>+62 823-2682-6612</span>
+          </a>
+
+          <!-- Instagram -->
+          <a href="https://instagram.com/ayas5131" target="_blank" class="contact-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
+            <span>@ayas5131</span>
+          </a>
+
+          <!-- Tombol Besar -->
+          <a href="https://wa.me/6282326826612" target="_blank" class="btn-contact-main">
+            Pesan via WhatsApp
+          </a>
+
+        </div>
+      </div>
+
+      <!-- KANAN: LOKASI -->
+      <div class="col-lg-6">
+        <div class="contact-card h-100">
+
+          <h5 class="mb-3">Lokasi Kami</h5>
+
+          <p class="text-muted">
+            Tahu Ayas, RT 05/RW 02, Babalanlor, Bojong, Pekalongan, Jawa Tengah
+          </p>
+
+          <!-- MAP -->
+          <div class="map-container mb-3">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.123456789012!2d109.650000!3d-6.900000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7aa1234567890%3A0xabcdef1234567890!2sBojong,+Pekalongan,+Jawa+Tengah!5e0!3m2!1sid!2sid!4v168xxxxxxx" 
+              width="100%" height="250" style="border:0; border-radius: 15px;" loading="lazy"></iframe>
+          </div>
+
+          <a href="https://maps.app.goo.gl/LEN37vvsVAnmbM3x8" target="_blank" class="btn-location">
+            Lihat di Google Maps
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+  <!-- FOOTER -->
+  <footer class="text-center py-3">
+    <p class="mb-0">© 2026 Tahu Ayas. Instagram @ayas5131</p>
+  </footer>
+
+  <!-- MODAL KERANJANG -->
+  <div class="modal fade" id="cartModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content cart-modal">
+
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold">Keranjang Belanja</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+
+        <!-- LIST KERANJANG -->
+        <div id="cart-items">
+          <p class="text-muted mb-0">Keranjang masih kosong.</p>
+        </div>
+
+        <!-- METODE AMBIL -->
+        <div class="mt-3">
+          <label class="fw-bold">Metode Pengambilan:</label>
+          <select id="metodeAmbil" class="form-select mt-2">
+            <option value="Ambil di Rumah Pengrajin">Ambil di Rumah Pengrajin</option>
+            <option value="COD">COD</option>
+          </select>
+        </div>
+
+        <!-- METODE BAYAR -->
+        <div class="mt-3">
+          <label class="fw-bold">Metode Pembayaran:</label>
+          <select id="metodeBayar" class="form-select mt-2">
+            <option value="DANA">DANA</option>
+            <option value="Transfer BRI">Transfer BRI</option>
+            <option value="COD">Bayar di Tempat (COD)</option>
+          </select>
+        </div>
+
+        <hr />
+
+        <!-- TOTAL -->
+        <div class="d-flex justify-content-between">
+          <strong>Total:</strong>
+          <strong id="cart-total">Rp 0</strong>
+        </div>
+
+      </div>
+
+      <div class="modal-footer border-0">
+        <button class="btn btn-outline-secondary" onclick="clearCart()">Kosongkan</button>
+        <button class="btn-elegant" onclick="checkoutWhatsApp()">Pesan via WhatsApp</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JS Eksternal -->
+  <script src="script.js"></script>
+</body>
+</html>
